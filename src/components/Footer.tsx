@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { categories } from "@/src/lib/categories";
+import Wordmark from "@/src/components/Wordmark";
 
 const footerColumns = [
   {
@@ -33,9 +34,9 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-16 sm:px-10">
         <div className="flex flex-col gap-12 sm:flex-row sm:justify-between">
           <div className="max-w-xs">
-            <span className="font-serif text-2xl tracking-[0.2em] text-foreground">
-              KILA
-            </span>
+            <Link href="/" className="inline-block">
+              <Wordmark className="h-7" />
+            </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               Perhiasan yang dirancang untuk bertahan lebih lama dari tren —
               sederhana, senyap, dan abadi.

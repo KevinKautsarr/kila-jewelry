@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useCart } from "@/src/context/CartContext";
+import Wordmark from "@/src/components/Wordmark";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -31,11 +32,8 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-10">
-        <Link
-          href="/"
-          className="font-serif text-2xl tracking-[0.2em] text-foreground"
-        >
-          KILA
+        <Link href="/">
+          <Wordmark className="h-7" />
         </Link>
 
         <ul className="hidden items-center gap-10 text-sm text-muted sm:flex">
