@@ -6,7 +6,13 @@ import { motion } from "framer-motion";
 import type { Product } from "@/src/generated/prisma/client";
 import { formatRupiah } from "@/src/lib/format";
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({
+  product,
+  priority = false,
+}: {
+  product: Product;
+  priority?: boolean;
+}) {
   return (
     <Link href={`/produk/${product.id}`} className="group block">
       <div className="relative aspect-square overflow-hidden border border-white/10 bg-white/5 transition-colors duration-300 group-hover:border-white/30">
@@ -21,6 +27,7 @@ export default function ProductCard({ product }: { product: Product }) {
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover"
+            priority={priority}
           />
         </motion.div>
       </div>

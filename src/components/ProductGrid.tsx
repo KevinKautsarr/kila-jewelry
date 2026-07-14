@@ -29,9 +29,9 @@ export default function ProductGrid({ products }: { products: Product[] }) {
       animate="show"
       className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     >
-      {products.map((product) => (
+      {products.map((product, index) => (
         <motion.div key={product.id} variants={item}>
-          <ProductCard product={product} />
+          <ProductCard product={product} priority={index < 4} />
         </motion.div>
       ))}
     </motion.div>
