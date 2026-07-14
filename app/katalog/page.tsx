@@ -1,27 +1,11 @@
-"use client";
+import { prisma } from "@/src/lib/prisma";
+import ProductGrid from "@/src/components/ProductGrid";
 
-import { motion } from "framer-motion";
-import { products } from "@/src/data/products";
-import ProductCard from "@/src/components/ProductCard";
+export default async function KatalogPage() {
+  const products = await prisma.product.findMany({
+    orderBy: { createdAt: "asc" },
+  });
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
-  },
-};
-
-export default function KatalogPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10">
       <div className="max-w-xl">
@@ -34,18 +18,7 @@ export default function KatalogPage() {
         </p>
       </div>
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-      >
-        {products.map((product) => (
-          <motion.div key={product.id} variants={item}>
-            <ProductCard product={product} />
-          </motion.div>
-        ))}
-      </motion.div>
+      <ProductGrid products={products} />
     </div>
   );
 }

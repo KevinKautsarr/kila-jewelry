@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import type { Product } from "@/src/data/products";
+import type { Product } from "@/src/generated/prisma/client";
 import { formatRupiah } from "@/src/lib/format";
 
 export default function ProductCard({ product }: { product: Product }) {

@@ -8,7 +8,9 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { Product } from "@/src/data/products";
+import type { Product as PrismaProduct } from "@/src/generated/prisma/client";
+
+export type Product = Omit<PrismaProduct, "createdAt">;
 
 export interface CartItem {
   product: Product;

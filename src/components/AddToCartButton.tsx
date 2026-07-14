@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useCart } from "@/src/context/CartContext";
-import type { Product } from "@/src/data/products";
+import type { Product } from "@/src/generated/prisma/client";
 
 export default function AddToCartButton({ product }: { product: Product }) {
   const { addToCart } = useCart();

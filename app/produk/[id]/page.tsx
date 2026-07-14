@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { products } from "@/src/data/products";
+import { prisma } from "@/src/lib/prisma";
 import { formatRupiah } from "@/src/lib/format";
 import AddToCartButton from "@/src/components/AddToCartButton";
 
 export async function generateStaticParams() {
+  const products = await prisma.product.findMany({ select: { id: true } });
   return products.map((product) => ({ id: product.id }));
 }
 
@@ -14,7 +15,7 @@ export default async function ProductPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const product = products.find((item) => item.id === id);
+  const product = await prisma.product.findUnique({ where: { id } });
 
   if (!product) {
     notFound();
