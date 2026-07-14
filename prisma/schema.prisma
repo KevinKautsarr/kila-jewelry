@@ -21,3 +21,29 @@ model Product {
   image       String
   createdAt   DateTime @default(now())
 }
+
+model Order {
+  id        String      @id @default(cuid())
+  createdAt DateTime    @default(now())
+  nama      String
+  email     String
+  telepon   String
+  alamat    String
+  provinsi  String
+  kota      String
+  kodePos   String
+  catatan   String?
+  total     Int
+  status    String      @default("pending")
+  items     OrderItem[]
+}
+
+model OrderItem {
+  id          String @id @default(cuid())
+  order       Order  @relation(fields: [orderId], references: [id])
+  orderId     String
+  productId   String
+  productName String
+  price       Int
+  quantity    Int
+}

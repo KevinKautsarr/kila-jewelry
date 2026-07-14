@@ -28,10 +28,6 @@ export default function CartPage() {
     );
   }
 
-  const handleCheckout = () => {
-    alert("Fitur checkout belum tersedia.");
-  };
-
   return (
     <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10">
       <h1 className="font-serif text-4xl text-foreground sm:text-5xl">
@@ -118,13 +114,12 @@ export default function CartPage() {
             <span className="text-foreground">{formatRupiah(totalPrice)}</span>
           </div>
 
-          <button
-            type="button"
-            onClick={handleCheckout}
-            className="mt-8 w-full border border-white/30 px-8 py-3 text-sm tracking-wide text-foreground transition-colors duration-300 hover:bg-white hover:text-black"
+          <Link
+            href="/checkout"
+            className="mt-8 block w-full border border-white/30 px-8 py-3 text-center text-sm tracking-wide text-foreground transition-colors duration-300 hover:bg-white hover:text-black"
           >
             Checkout
-          </button>
+          </Link>
         </div>
       </div>
     </div>
