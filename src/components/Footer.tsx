@@ -1,17 +1,27 @@
 import Link from "next/link";
+import { categories } from "@/src/lib/categories";
 
 const footerColumns = [
   {
     title: "Belanja",
-    links: ["Kalung", "Cincin", "Anting", "Gelang"],
+    links: categories.map((category) => ({
+      label: category.label,
+      href: `/katalog?kategori=${category.value}`,
+    })),
   },
   {
     title: "Bantuan",
-    links: ["FAQ", "Pengiriman", "Pengembalian", "Kontak"],
+    links: ["FAQ", "Pengiriman", "Pengembalian", "Kontak"].map((label) => ({
+      label,
+      href: "#",
+    })),
   },
   {
     title: "Sosmed",
-    links: ["Instagram", "TikTok", "Pinterest"],
+    links: ["Instagram", "TikTok", "Pinterest"].map((label) => ({
+      label,
+      href: "#",
+    })),
   },
 ];
 
@@ -38,12 +48,12 @@ export default function Footer() {
                 </h3>
                 <ul className="mt-4 space-y-3">
                   {column.links.map((link) => (
-                    <li key={link}>
+                    <li key={link.label}>
                       <Link
-                        href="#"
+                        href={link.href}
                         className="text-sm text-muted transition-colors hover:text-foreground"
                       >
-                        {link}
+                        {link.label}
                       </Link>
                     </li>
                   ))}
