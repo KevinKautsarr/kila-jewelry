@@ -18,5 +18,6 @@ model Product {
   price       Int
   description String
   category    String
+  image       String
   createdAt   DateTime @default(now())
 }

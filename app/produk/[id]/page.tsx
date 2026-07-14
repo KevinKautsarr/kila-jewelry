@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { prisma } from "@/src/lib/prisma";
 import { formatRupiah } from "@/src/lib/format";
@@ -31,7 +32,16 @@ export default async function ProductPage({
       </Link>
 
       <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="aspect-square border border-white/10 bg-gradient-to-br from-white/10 to-transparent" />
+        <div className="relative aspect-square border border-white/10">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
+            priority
+          />
+        </div>
 
         <div className="flex flex-col justify-center">
           <p className="text-xs uppercase tracking-widest text-muted">

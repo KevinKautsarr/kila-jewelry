@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Minus, Plus, X } from "lucide-react";
 import { useCart } from "@/src/context/CartContext";
 import { formatRupiah } from "@/src/lib/format";
@@ -44,7 +45,15 @@ export default function CartPage() {
               key={product.id}
               className="flex gap-5 border-b border-white/10 pb-8"
             >
-              <div className="h-24 w-24 shrink-0 border border-white/10 bg-gradient-to-br from-white/10 to-transparent" />
+              <div className="relative h-24 w-24 shrink-0 border border-white/10">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  sizes="96px"
+                  className="object-cover"
+                />
+              </div>
 
               <div className="flex flex-1 flex-col justify-between">
                 <div className="flex items-start justify-between gap-4">
