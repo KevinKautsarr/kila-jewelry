@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { products } from "@/src/data/products";
 import { formatRupiah } from "@/src/lib/format";
+import AddToCartButton from "@/src/components/AddToCartButton";
 
 export async function generateStaticParams() {
   return products.map((product) => ({ id: product.id }));
@@ -43,12 +44,7 @@ export default async function ProductPage({
           </p>
           <p className="mt-6 max-w-md text-muted">{product.description}</p>
 
-          <button
-            type="button"
-            className="mt-10 inline-flex w-fit items-center border border-white/30 px-8 py-3 text-sm tracking-wide text-foreground transition-colors duration-300 hover:bg-white hover:text-black"
-          >
-            Tambah ke Keranjang
-          </button>
+          <AddToCartButton product={product} />
         </div>
       </div>
     </div>

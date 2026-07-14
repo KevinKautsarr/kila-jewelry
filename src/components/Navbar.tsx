@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useCart } from "@/src/context/CartContext";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -12,6 +13,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -49,13 +51,18 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <button
-          type="button"
+        <Link
+          href="/keranjang"
           aria-label="Keranjang"
-          className="text-foreground transition-opacity hover:opacity-70"
+          className="relative text-foreground transition-opacity hover:opacity-70"
         >
           <ShoppingBag className="h-5 w-5" strokeWidth={1.5} />
-        </button>
+          {totalItems > 0 && (
+            <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-foreground px-1 text-[10px] font-medium text-background">
+              {totalItems}
+            </span>
+          )}
+        </Link>
       </nav>
     </header>
   );
