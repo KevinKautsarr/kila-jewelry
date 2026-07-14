@@ -32,7 +32,7 @@ export default async function ProductPage({
       </Link>
 
       <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-square border border-white/10">
+        <div className="relative aspect-square">
           <Image
             src={product.image}
             alt={product.name}

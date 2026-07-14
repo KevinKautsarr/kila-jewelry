@@ -41,7 +41,7 @@ export default function CartPage() {
               key={product.id}
               className="flex gap-5 border-b border-white/10 pb-8"
             >
-              <div className="relative h-24 w-24 shrink-0 border border-white/10">
+              <div className="relative h-24 w-24 shrink-0">
                 <Image
                   src={product.image}
                   alt={product.name}

@@ -15,7 +15,7 @@ export default function ProductCard({
 }) {
   return (
     <Link href={`/produk/${product.id}`} className="group block">
-      <div className="relative aspect-square overflow-hidden border border-white/10 bg-white/5 transition-colors duration-300 group-hover:border-white/30">
+      <div className="relative aspect-square overflow-hidden border border-transparent transition-colors duration-300 group-hover:border-white/30">
         <motion.div
           className="relative h-full w-full"
           whileHover={{ scale: 1.05 }}
