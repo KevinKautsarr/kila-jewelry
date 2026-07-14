@@ -11,10 +11,12 @@ const footerColumns = [
   },
   {
     title: "Bantuan",
-    links: ["FAQ", "Pengiriman", "Pengembalian", "Kontak"].map((label) => ({
-      label,
-      href: "#",
-    })),
+    links: [
+      { label: "FAQ", href: "/faq" },
+      { label: "Pengiriman", href: "/pengiriman" },
+      { label: "Pengembalian", href: "/pengembalian" },
+      { label: "Kontak", href: "/kontak" },
+    ],
   },
   {
     title: "Sosmed",
