@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/src/lib/prisma";
+import { auth } from "@/src/lib/session";
 
 export interface CreateOrderInput {
   nama: string;
@@ -66,6 +67,9 @@ export async function createOrder(
     0
   );
 
+  const session = await auth();
+  const userId = session?.user?.id;
+
   try {
     const order = await prisma.$transaction(async (tx) => {
       return tx.order.create({
@@ -79,6 +83,7 @@ export async function createOrder(
           kodePos,
           catatan: catatan?.trim() ? catatan.trim() : null,
           total,
+          userId,
           items: {
             create: orderItemsData,
           },

@@ -5,6 +5,7 @@ import { ShoppingBag } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useCart } from "@/src/context/CartContext";
 import Wordmark from "@/src/components/Wordmark";
+import AuthMenu from "@/src/components/AuthMenu";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -49,18 +50,22 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <Link
-          href="/keranjang"
-          aria-label="Keranjang"
-          className="relative text-foreground transition-opacity hover:opacity-70"
-        >
-          <ShoppingBag className="h-5 w-5" strokeWidth={1.5} />
-          {totalItems > 0 && (
-            <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-foreground px-1 text-[10px] font-medium text-background">
-              {totalItems}
-            </span>
-          )}
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link
+            href="/keranjang"
+            aria-label="Keranjang"
+            className="relative text-foreground transition-opacity hover:opacity-70"
+          >
+            <ShoppingBag className="h-5 w-5" strokeWidth={1.5} />
+            {totalItems > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-foreground px-1 text-[10px] font-medium text-background">
+                {totalItems}
+              </span>
+            )}
+          </Link>
+
+          <AuthMenu />
+        </div>
       </nav>
     </header>
   );

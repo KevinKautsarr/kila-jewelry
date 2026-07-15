@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { useCart } from "@/src/context/CartContext";
 import { formatRupiah } from "@/src/lib/format";
 import { createOrder } from "@/src/lib/actions/createOrder";
@@ -10,6 +11,7 @@ import RegionSelect from "@/src/components/RegionSelect";
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const { data: session } = useSession();
   const { items, totalPrice, clearCart } = useCart();
 
   const [nama, setNama] = useState("");
@@ -22,6 +24,13 @@ export default function CheckoutPage() {
   const [catatan, setCatatan] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (session?.user) {
+      setNama((current) => current || session.user.name || "");
+      setEmail((current) => current || session.user.email || "");
+    }
+  }, [session]);
 
   if (items.length === 0) {
     return (

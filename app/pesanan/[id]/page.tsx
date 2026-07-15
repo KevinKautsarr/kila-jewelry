@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/src/lib/prisma";
 import { formatRupiah } from "@/src/lib/format";
+import { auth } from "@/src/lib/session";
 
 export default async function OrderConfirmationPage({
   params,
@@ -15,6 +16,17 @@ export default async function OrderConfirmationPage({
   });
 
   if (!order) {
+    notFound();
+  }
+
+  // Order confirmation links must stay reachable for guest checkouts
+  // (no userId to check against) using their unguessable cuid. The one
+  // case we actively block: a *different* signed-in user trying to view
+  // someone else's order by guessing/reusing an id.
+  const session = await auth();
+  const viewerId = session?.user?.id;
+  const belongsToAnotherUser = order.userId && order.userId !== viewerId;
+  if (belongsToAnotherUser) {
     notFound();
   }
 
