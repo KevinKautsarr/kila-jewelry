@@ -58,6 +58,15 @@ export default function AuthMenu() {
           >
             Pesanan Saya
           </Link>
+          {session.user.role === "admin" && (
+            <Link
+              href="/admin/produk"
+              onClick={() => setOpen(false)}
+              className="block border-t border-white/10 px-4 py-3 text-sm text-foreground transition-colors hover:bg-white/5"
+            >
+              Admin
+            </Link>
+          )}
           <button
             type="button"
             onClick={() => {

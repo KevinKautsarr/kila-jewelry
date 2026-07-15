@@ -3,14 +3,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/src/lib/session";
 import { prisma } from "@/src/lib/prisma";
 import { formatRupiah } from "@/src/lib/format";
-
-const statusLabels: Record<string, string> = {
-  pending: "Menunggu Pembayaran",
-  paid: "Dibayar",
-  shipped: "Dikirim",
-  completed: "Selesai",
-  cancelled: "Dibatalkan",
-};
+import { statusLabels } from "@/src/lib/orderStatus";
 
 export default async function MyOrdersPage() {
   const session = await auth();
