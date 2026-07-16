@@ -1,5 +1,11 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { requireAdmin } from "@/src/lib/requireAdmin";
+
+export const metadata: Metadata = {
+  title: "Admin",
+  robots: { index: false, follow: false },
+};
 
 const adminNavLinks = [
   { href: "/admin/produk", label: "Produk" },

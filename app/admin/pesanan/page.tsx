@@ -55,6 +55,7 @@ export default async function AdminOrdersPage() {
                 <td className="py-4 pr-4 text-right">
                   <Link
                     href={`/admin/pesanan/${order.id}`}
+                    aria-label={`Detail pesanan ${order.nama}`}
                     className="text-sm text-muted underline transition-colors hover:text-foreground"
                   >
                     Detail

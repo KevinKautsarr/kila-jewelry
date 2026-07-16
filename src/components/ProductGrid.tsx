@@ -21,7 +21,13 @@ const item = {
   },
 };
 
-export default function ProductGrid({ products }: { products: Product[] }) {
+export default function ProductGrid({
+  products,
+  headingLevel,
+}: {
+  products: Product[];
+  headingLevel?: "h2" | "h3";
+}) {
   return (
     <motion.div
       variants={container}
@@ -31,7 +37,11 @@ export default function ProductGrid({ products }: { products: Product[] }) {
     >
       {products.map((product, index) => (
         <motion.div key={product.id} variants={item}>
-          <ProductCard product={product} priority={index < 4} />
+          <ProductCard
+            product={product}
+            priority={index < 4}
+            headingLevel={headingLevel}
+          />
         </motion.div>
       ))}
     </motion.div>

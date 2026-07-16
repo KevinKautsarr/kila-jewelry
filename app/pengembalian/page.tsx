@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import PageHeader from "@/src/components/PageHeader";
 import FadeIn from "@/src/components/FadeIn";
+
+export const metadata: Metadata = {
+  title: "Kebijakan Pengembalian",
+  description:
+    "Syarat, jangka waktu, dan proses pengembalian produk KILA yang mudah dan jelas.",
+};
 
 export default function PengembalianPage() {
   return (

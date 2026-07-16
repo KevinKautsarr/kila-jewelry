@@ -43,7 +43,7 @@ export default function AuthMenu() {
         aria-label="Menu akun"
         className="flex items-center gap-2 text-foreground transition-opacity hover:opacity-70"
       >
-        <User className="h-5 w-5" strokeWidth={1.5} />
+        <User aria-hidden="true" className="h-5 w-5" strokeWidth={1.5} />
       </button>
 
       {open && (

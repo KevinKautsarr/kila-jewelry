@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import PageHeader from "@/src/components/PageHeader";
 import FadeIn from "@/src/components/FadeIn";
 import ContactForm from "@/src/components/ContactForm";
+
+export const metadata: Metadata = {
+  title: "Hubungi Kami",
+  description:
+    "Hubungi tim KILA melalui email, WhatsApp, atau kunjungi butik kami di Jakarta Selatan.",
+};
 
 const contactDetails = [
   {
@@ -42,6 +49,7 @@ export default function KontakPage() {
             {contactDetails.map((detail) => (
               <li key={detail.label} className="flex items-start gap-4">
                 <detail.icon
+                  aria-hidden="true"
                   className="mt-1 h-5 w-5 shrink-0 text-foreground"
                   strokeWidth={1.5}
                 />

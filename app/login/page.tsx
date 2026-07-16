@@ -1,6 +1,13 @@
 import { Suspense } from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
 import LoginForm from "@/src/components/LoginForm";
+
+export const metadata: Metadata = {
+  title: "Masuk",
+  description: "Masuk ke akun KILA untuk melihat riwayat pesananmu.",
+  robots: { index: false, follow: false },
+};
 
 export default function LoginPage() {
   return (

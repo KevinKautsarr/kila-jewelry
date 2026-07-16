@@ -38,11 +38,16 @@ export default function DeleteProductButton({
         type="button"
         onClick={handleDelete}
         disabled={isPending}
+        aria-label={`Hapus produk ${productName}`}
         className="text-sm text-muted transition-colors hover:text-red-400 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isPending ? "Menghapus..." : "Hapus"}
       </button>
-      {error && <p className="text-xs text-red-400">{error}</p>}
+      {error && (
+        <p role="alert" className="text-xs text-red-400">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

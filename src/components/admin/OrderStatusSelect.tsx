@@ -37,6 +37,7 @@ export default function OrderStatusSelect({
         value={status}
         onChange={(event) => handleChange(event.target.value)}
         disabled={isPending}
+        aria-label="Status pesanan"
         className="border border-white/15 bg-transparent px-4 py-2.5 text-sm text-foreground outline-none transition-colors focus:border-white/40 disabled:opacity-50"
       >
         {orderStatuses.map((option) => (
@@ -49,7 +50,11 @@ export default function OrderStatusSelect({
           </option>
         ))}
       </select>
-      {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
+      {error && (
+        <p role="alert" className="mt-2 text-xs text-red-400">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

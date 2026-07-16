@@ -12,7 +12,7 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="border border-white/10 p-8 text-center">
+      <div role="status" className="border border-white/10 p-8 text-center">
         <p className="font-serif text-lg text-foreground">
           Terima kasih, pesanmu sudah terkirim.
         </p>

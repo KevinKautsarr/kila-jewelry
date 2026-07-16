@@ -71,7 +71,7 @@ export default function CartPage() {
                     onClick={() => removeFromCart(product.id)}
                     className="text-muted transition-colors hover:text-foreground"
                   >
-                    <X className="h-4 w-4" strokeWidth={1.5} />
+                    <X aria-hidden="true" className="h-4 w-4" strokeWidth={1.5} />
                   </button>
                 </div>
 
@@ -83,7 +83,7 @@ export default function CartPage() {
                       onClick={() => updateQuantity(product.id, quantity - 1)}
                       className="text-muted transition-colors hover:text-foreground"
                     >
-                      <Minus className="h-3.5 w-3.5" strokeWidth={1.5} />
+                      <Minus aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={1.5} />
                     </button>
                     <span className="w-4 text-center text-sm text-foreground">
                       {quantity}
@@ -94,7 +94,7 @@ export default function CartPage() {
                       onClick={() => updateQuantity(product.id, quantity + 1)}
                       className="text-muted transition-colors hover:text-foreground"
                     >
-                      <Plus className="h-3.5 w-3.5" strokeWidth={1.5} />
+                      <Plus aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={1.5} />
                     </button>
                   </div>
 

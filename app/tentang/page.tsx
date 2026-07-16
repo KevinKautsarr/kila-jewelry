@@ -106,12 +106,13 @@ export default function TentangPage() {
         {values.map((value) => (
           <div key={value.title} className="text-center sm:text-left">
             <value.icon
+              aria-hidden="true"
               className="mx-auto h-6 w-6 text-foreground sm:mx-0"
               strokeWidth={1.5}
             />
-            <h3 className="mt-4 font-serif text-lg text-foreground">
+            <h2 className="mt-4 font-serif text-lg text-foreground">
               {value.title}
-            </h3>
+            </h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
               {value.description}
             </p>

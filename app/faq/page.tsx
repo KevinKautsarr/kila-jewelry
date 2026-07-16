@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import PageHeader from "@/src/components/PageHeader";
 import FadeIn from "@/src/components/FadeIn";
 import FaqAccordion from "@/src/components/FaqAccordion";
+
+export const metadata: Metadata = {
+  title: "Pertanyaan yang Sering Diajukan",
+  description:
+    "Jawaban seputar material, perawatan, ukuran cincin, garansi, dan cara memesan produk KILA.",
+};
 
 const faqItems = [
   {

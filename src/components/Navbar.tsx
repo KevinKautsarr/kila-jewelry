@@ -56,7 +56,7 @@ export default function Navbar() {
             aria-label="Keranjang"
             className="relative text-foreground transition-opacity hover:opacity-70"
           >
-            <ShoppingBag className="h-5 w-5" strokeWidth={1.5} />
+            <ShoppingBag aria-hidden="true" className="h-5 w-5" strokeWidth={1.5} />
             {totalItems > 0 && (
               <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-foreground px-1 text-[10px] font-medium text-background">
                 {totalItems}

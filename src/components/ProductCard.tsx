@@ -9,9 +9,11 @@ import { formatRupiah } from "@/src/lib/format";
 export default function ProductCard({
   product,
   priority = false,
+  headingLevel: HeadingTag = "h3",
 }: {
   product: Product;
   priority?: boolean;
+  headingLevel?: "h2" | "h3";
 }) {
   return (
     <Link href={`/produk/${product.id}`} className="group block">
@@ -36,7 +38,9 @@ export default function ProductCard({
         <p className="text-xs uppercase tracking-widest text-muted">
           {product.category}
         </p>
-        <h3 className="font-serif text-lg text-foreground">{product.name}</h3>
+        <HeadingTag className="font-serif text-lg text-foreground">
+          {product.name}
+        </HeadingTag>
         <p className="text-sm text-muted">{formatRupiah(product.price)}</p>
       </div>
     </Link>

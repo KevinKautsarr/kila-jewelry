@@ -1,9 +1,16 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import type { Metadata } from "next";
 import { auth } from "@/src/lib/session";
 import { prisma } from "@/src/lib/prisma";
 import { formatRupiah } from "@/src/lib/format";
 import { statusLabels } from "@/src/lib/orderStatus";
+
+export const metadata: Metadata = {
+  title: "Pesanan Saya",
+  description: "Riwayat pesanan yang kamu buat di KILA.",
+  robots: { index: false, follow: false },
+};
 
 export default async function MyOrdersPage() {
   const session = await auth();
@@ -71,6 +78,7 @@ export default async function MyOrdersPage() {
 
               <Link
                 href={`/pesanan/${order.id}`}
+                aria-label={`Lihat detail pesanan ${order.id}`}
                 className="mt-4 inline-block text-sm text-muted underline transition-colors hover:text-foreground"
               >
                 Lihat Detail

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import PageHeader from "@/src/components/PageHeader";
 import FadeIn from "@/src/components/FadeIn";
+
+export const metadata: Metadata = {
+  title: "Informasi Pengiriman",
+  description:
+    "Estimasi waktu, metode, area jangkauan, dan cara melacak pengiriman pesanan KILA.",
+};
 
 export default function PengirimanPage() {
   return (

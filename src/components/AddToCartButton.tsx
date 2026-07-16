@@ -18,6 +18,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
     <button
       type="button"
       onClick={handleClick}
+      aria-live="polite"
       className="mt-10 inline-flex w-fit items-center border border-white/30 px-8 py-3 text-sm tracking-wide text-foreground transition-colors duration-300 hover:bg-white hover:text-black"
     >
       {added ? "Ditambahkan ✓" : "Tambah ke Keranjang"}

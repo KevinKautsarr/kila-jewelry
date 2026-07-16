@@ -32,7 +32,11 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="shrink-0 text-muted"
               >
-                <ChevronDown className="h-5 w-5" strokeWidth={1.5} />
+                <ChevronDown
+                  aria-hidden="true"
+                  className="h-5 w-5"
+                  strokeWidth={1.5}
+                />
               </motion.span>
             </button>
 

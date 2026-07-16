@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { prisma } from "@/src/lib/prisma";
 import { categories, isCategoryValue } from "@/src/lib/categories";
 import { isSortValue, sortToOrderBy, type SortValue } from "@/src/lib/sort";
@@ -8,14 +9,44 @@ import CategoryFilter from "@/src/components/CategoryFilter";
 import SearchBar from "@/src/components/SearchBar";
 import SortSelect from "@/src/components/SortSelect";
 
+type KatalogSearchParams = {
+  kategori?: string | string[];
+  q?: string | string[];
+  sort?: string | string[];
+};
+
+function resolveCategoryLabel(kategori?: string | string[]) {
+  const kategoriValue = Array.isArray(kategori) ? kategori[0] : kategori;
+  const activeCategory =
+    kategoriValue && isCategoryValue(kategoriValue) ? kategoriValue : undefined;
+  return categories.find((category) => category.value === activeCategory)
+    ?.label;
+}
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<KatalogSearchParams>;
+}): Promise<Metadata> {
+  const { kategori } = await searchParams;
+  const categoryLabel = resolveCategoryLabel(kategori);
+
+  const title = categoryLabel ? `Koleksi ${categoryLabel}` : "Koleksi";
+  const description = categoryLabel
+    ? `Jelajahi pilihan ${categoryLabel.toLowerCase()} KILA yang senyap namun berkesan.`
+    : "Jelajahi seluruh koleksi perhiasan KILA — kalung, cincin, anting, dan gelang minimalis untuk keseharianmu.";
+
+  return {
+    title,
+    description,
+    openGraph: { title: `${title} | KILA`, description },
+  };
+}
+
 export default async function KatalogPage({
   searchParams,
 }: {
-  searchParams: Promise<{
-    kategori?: string | string[];
-    q?: string | string[];
-    sort?: string | string[];
-  }>;
+  searchParams: Promise<KatalogSearchParams>;
 }) {
   const { kategori, q, sort } = await searchParams;
 
@@ -85,7 +116,7 @@ export default async function KatalogPage({
           )}
         </div>
       ) : (
-        <ProductGrid products={products} />
+        <ProductGrid products={products} headingLevel="h2" />
       )}
     </div>
   );

@@ -59,6 +59,7 @@ export default async function AdminProductsPage() {
                   <div className="flex items-center justify-end gap-5">
                     <Link
                       href={`/admin/produk/${product.id}/edit`}
+                      aria-label={`Edit produk ${product.name}`}
                       className="text-sm text-muted transition-colors hover:text-foreground"
                     >
                       Edit
